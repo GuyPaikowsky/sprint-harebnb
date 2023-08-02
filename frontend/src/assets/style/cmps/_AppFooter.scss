@@ -1,0 +1,14 @@
+.app-footer {
+  display: flex;
+  align-items: center;
+  height: 5vh;
+
+  padding: 10px;
+  background-color: lightblue;
+
+  &p {
+    .app-footer p {
+      margin: 0;
+    }
+  }
+}

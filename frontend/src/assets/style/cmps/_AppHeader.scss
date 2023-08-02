@@ -1,0 +1,23 @@
+.app-header {
+  padding: 2.5em 0;
+  background-color: lightgrey;
+  overflow: auto;
+
+  .harebnb-logo {
+    display: flex;
+    //justify-content: center;
+    //align-items: flex-start;
+    .title {
+      font-weight: 800;
+      font-size: 20px;
+      color: $airbnb-red;
+      padding-top: 0.3em;
+      padding-left: 0.3em;
+    }
+  }
+
+}
+
+//.app-header .user-login-container {
+//    float: right;
+//}
