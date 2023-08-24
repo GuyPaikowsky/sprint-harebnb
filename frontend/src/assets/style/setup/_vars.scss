@@ -3,17 +3,33 @@ $text-clr1: #222;
 $text-clr2: #717171;
 $airbnb-red: #FF385C;
 
-//:root {
-//  --clr1: rgb(96, 107, 91);
-//  --clr2: rgb(120, 99, 110);
-//
-//  --clr1bg: rgb(153, 166, 149);
-//  --clr1bg-light: rgb(205, 221, 200);
-//  --clr2bg: rgb(233, 206, 221);
-//  --clr2bg-light: rgb(247, 185, 219);
-//
-//  --gray1: rgb(240, 240, 240);
-//  --gray2: rgb(155, 155, 155);
-//  --gray3: rgb(44, 44, 44);
-//}
-//
+//BACKGROUND COLORS
+$bg-clr-white: white;
+
+//ELEMENT COLORS
+$layout-border-clr: #EBEBEB;
+
+//LAYOUT SIZES
+$layout-margin: 40px;
+
+
+// LAYOUT BREAKPOINTS
+
+// logo disappears and nav changes...
+$break-mobile: 550px;
+
+//explore page stays the same, but grid has 2 columns
+$break-tablet: 700px;
+
+//explore page goes back to desktop layout (without logo)
+//grid has 3 columns
+$break-desktop: 950px;
+
+//logo shows, grid has 4 columns
+$break-desktop-wide: 1127px;
+
+// Grid has 4 columns, but layout margins become bigger...
+$break-desktop-widest: 1440px;
+
+// Grid gets 5 columns
+$break-desktop-max: 1640px;

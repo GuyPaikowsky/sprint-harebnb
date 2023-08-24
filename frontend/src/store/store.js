@@ -4,23 +4,26 @@ import {userStore} from '@/store/user.store.js'
 import {showErrorMsg, showSuccessMsg} from '@/services/event-bus.service'
 
 export const stayStore = createStore({
+  strict: process.env.NODE_ENV !== 'production',
   modules: {
     userStore
   },
   state: {
     stays: [],
+    page: 1,
+    limit: 30,
     selectedStay: stayService.getEmptyStay(),
     filter: {
       name: "",
       inStock: "all",
       labels: [],
-      sortBy: "name"
+      // sortBy: "name"
     },
     labels: []
   },
   mutations: {
     setStays(state, stays) {
-      state.stays = stays
+      state.stays = [...state.stays, ...stays]
     },
     setFilter(state, filter) {
       state.filter = filter
@@ -45,13 +48,17 @@ export const stayStore = createStore({
     },
     clearSelectedStay(state) {
       state.selectedStay = stayService.getEmptyStay()
+    },
+    incrementPage(state) {
+      state.page++
     }
   },
   actions: {
     async loadStays({commit, state}) {
       try {
-        const stays = await stayService.query(state.filter)
+        const stays = await stayService.query(state.filter, state.page, state.limit)
         commit('setStays', stays)
+        commit('incrementPage')
       } catch(err) {
         console.error(err)
         showErrorMsg('Failed to load stays!')

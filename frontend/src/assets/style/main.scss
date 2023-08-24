@@ -1,5 +1,6 @@
 /* Setup */
 @import 'setup/vars';
+@import 'setup/mixins';
 @import 'setup/typography';
 
 /* Base */
@@ -14,7 +15,7 @@
 @import 'cmps/AppFooter.scss';
 @import 'cmps/UserMsg';
 @import 'cmps/StayIndex';
-@import 'cmps/StayFilter';
+@import 'cmps/StayLabels';
 @import 'cmps/StayList';
 
 @import 'cmps/StayDetails';

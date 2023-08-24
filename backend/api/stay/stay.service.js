@@ -12,14 +12,17 @@ export const stayService = {
   save,
 }
 
-async function query(filterBy = {}, getLabelsOnly = false) {
+async function query(filterBy = {}, getLabelsOnly = false, page = 1, limit = 20) {
+  console.log('Page:', page, 'Limit:', limit); // Log the page and limit values
+
   const criteria = _buildCriteria(filterBy)
   let projection = getLabelsOnly ? {labels: 1, _id: 0} : {}
 
+  const skip = (page - 1) * limit
+
   try {
     const collection = await dbService.getCollection('listingsAndReviews')
-    let stays = await collection.find(criteria, {projection: projection}).toArray()
-
+    let stays = await collection.find(criteria, {projection: projection}).skip(skip).limit(limit).toArray()
     if (getLabelsOnly) {
       let labels = stays.flatMap(stay => stay.labels)
       stays = [...new Set(labels)]

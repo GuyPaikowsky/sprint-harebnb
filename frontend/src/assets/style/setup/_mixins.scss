@@ -1,0 +1,72 @@
+/* Media queries Breakpoint mixins */
+
+@mixin for-mobile-layout {
+  @media (min-width: $break-mobile) {
+    @content;
+  }
+}
+
+@mixin for-tablet-layout {
+  @media (min-width: $break-tablet) {
+    @content;
+  }
+}
+
+@mixin for-desktop-layout {
+  @media (min-width: $break-desktop) {
+    @content;
+
+  }
+}
+
+@mixin for-desktop-wide-layout {
+  @media (min-width: $break-desktop-wide) {
+    @content;
+  }
+}
+
+@mixin for-desktop-widest-layout {
+  @media (min-width: $break-desktop-widest) {
+    @content;
+  }
+}
+
+@mixin for-desktop-max-layout {
+  @media (min-width: $break-desktop-max) {
+    @content;
+  }
+}
+
+/* Media Mixins */
+
+//Maintain aspect ratio
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+  overflow: hidden;
+  &:before {
+    content: "";
+    display: block;
+    width: 100%;
+    padding-top: ($height / $width) * 100%;
+  }
+  > * {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  > img {
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+// Remove :hover on mobile
+@mixin hover-supported {
+  @media not all and (pointer: coarse) {
+    &:hover {
+      @content;
+    }
+  }
+}

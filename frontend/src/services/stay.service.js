@@ -9,8 +9,12 @@ export const stayService = {
   getEmptyStay,
 }
 
-function query(filterBy = {}) {
-  return httpService.get('stay', filterBy)
+// function query(filterBy = {}, page = 1, limit = 40) {
+//   return httpService.get('stay', filterBy, false, page, limit)
+// }
+
+function query(filterBy = {}, page = 1, limit = 40) {
+  return httpService.get(`stay?page=${page}&limit=${limit}`, filterBy)
 }
 
 function getLabels() {

@@ -13,9 +13,14 @@ export async function getStayById(req, res) {
 }
 
 export async function getStays(req, res) {
+  console.log('Query parameters:', req.query); // Log the query parameters
+
+  const page = +req.query.page || 1;
+  const limit = +req.query.limit || 20;
+
   const getLabelsOnly = req.query.getLabelsOnly === 'true'
   try {
-    const staysOrLabels = await stayService.query(req.query, getLabelsOnly)
+    const staysOrLabels = await stayService.query(req.query, getLabelsOnly, page, limit)
     res.send(staysOrLabels)
   } catch (err) {
     logger.error('Cannot get stays', err)
@@ -38,16 +43,12 @@ export async function addStay(req, res) {
 export async function updateStay(req, res) {
   try {
     const stay = req.body
-    // Ensure that stay._id exists for an update operation.
     if (!stay._id) {
       return res.status(400).send('Missing stay ID for update')
     }
 
-    // Get stay's ID and remove _id from the object to avoid attempting to update it
     const stayId = stay._id
     delete stay._id
-
-    // Update the stay
     const updatedStay = await stayService.save({ id: stayId, changes: stay })
 
     logger.info('Stay Updated!', updatedStay)

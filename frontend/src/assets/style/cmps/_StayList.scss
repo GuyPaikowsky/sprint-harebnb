@@ -1,15 +1,18 @@
+
 .stay-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  padding: 0 $layout-margin;
   gap: 10px;
-
-  padding: 10px;
-  background-color: lightblue;
+  //padding: 10px;
+  background-color: $bg-clr-white;
   list-style-type: none;
+  overflow: auto;
+
 
   li {
     padding: 10px;
     background-color: darkseagreen;
-
+    //width: min-content;
   }
 }

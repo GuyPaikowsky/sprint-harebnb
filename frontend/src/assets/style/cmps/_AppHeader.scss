@@ -1,23 +1,50 @@
-.app-header {
-  padding: 2.5em 0;
-  background-color: lightgrey;
-  overflow: auto;
+.app-header-grid {
+  display: grid;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  grid-template-columns: $layout-margin 1fr $layout-margin;
 
-  .harebnb-logo {
-    display: flex;
-    //justify-content: center;
-    //align-items: flex-start;
-    .title {
-      font-weight: 800;
-      font-size: 20px;
-      color: $airbnb-red;
-      padding-top: 0.3em;
-      padding-left: 0.3em;
-    }
+  .margin-divider {
+    grid-area: 1, -1;
+    background-color: $bg-clr-white;
+    border-bottom: 1px $layout-border-clr solid;
   }
 
-}
+  .app-header {
+    grid-area: 1 / 2;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    padding: 1.25em 0;
+    background-color: $bg-clr-white;
+    border-bottom: 1px $layout-border-clr solid;
+    z-index: 100;
 
-//.app-header .user-login-container {
-//    float: right;
-//}
+
+    //&::after {
+    //  z-index: 999;
+    //  content: "";
+    //  position: absolute;
+    //  left: 50%;
+    //  top: 5em;
+    //  transform: translateX(-50%);
+    //  width: 95vw;
+    //  height: 1px;
+    //  background-color: $layout-border-clr;
+    //  overflow-x: hidden;
+    //}
+
+    .harebnb-logo {
+      display: flex;
+
+      .title {
+        font-weight: 800;
+        font-size: 20px;
+        color: $airbnb-red;
+        padding-top: 0.3em;
+        padding-left: 0.3em;
+      }
+    }
+  }
+}

@@ -1,5 +1,7 @@
+<!--//TODO: Do I emit an event here ? or just access the store directly?-->
+
 <template>
-  <ul class="stay-list">
+  <ul class="stay-list" @scroll.passive="onScroll">
     <StayPreview
         v-for="stay in stays"
         :key="stay._id"
@@ -23,12 +25,29 @@ export default {
       required: true
     }
   },
+  mounted() {
+    window.addEventListener('scroll', this.onScroll);
+  },
+  beforeUnmount() {
+    window.removeEventListener('scroll', this.onScroll);
+  },
   methods: {
     removeStay(stayId) {
       this.$store.dispatch('deleteStay', stayId)
     },
     showDetails(stayId) {
       this.$store.dispatch('loadStay', stayId)
+    },
+    onScroll(event) {
+      console.log('scroll-down')
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop
+      const scrollHeight = document.documentElement.scrollHeight
+      const clientHeight = document.documentElement.clientHeight
+      const tolerance = 5
+      const bottom = scrollHeight - scrollTop <= clientHeight + tolerance
+      if (bottom) {
+        this.$store.dispatch('loadStays')
+      }
     }
   },
   created() {
