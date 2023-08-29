@@ -1,7 +1,13 @@
 <template>
   <section class="label-grid-container">
     <div class="label-container-main">
-      <button @click="scrollLeft" v-if="showLeft" class="scroll-button scroll-left">Left</button>
+
+      <button @click="scrollLeft" v-if="showLeft" class="scroll-button scroll-left">
+        <svg class="scroll-svg-element" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" role="presentation" focusable="false" style="display: block; fill: none; height: 12px; width: 12px; stroke: currentcolor; stroke-width: 4; overflow: visible;">
+          <path d="M20 28 8.7 16.7a1 1 0 0 1 0-1.4L20 4"></path>
+        </svg>
+      </button>
+
       <div ref="scrollContainer" class="label-header">
         <div class="label-container" v-for="(label, index) in labels" :key="index">
           <img class="label-img" :src="label.img">
@@ -9,9 +15,16 @@
           >{{ label.text }}</span>
         </div>
       </div>
-      <button @click="scrollRight" v-if="showRight" class="scroll-button scroll-right">Right</button>
+
+      <button @click="scrollRight" v-if="showRight" class="scroll-button scroll-right">
+        <svg class="scroll-svg-element" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 7 11">
+          <path d="M0.939941 1L5.17744 5.2375C5.24615 5.3076 5.28464 5.40184 5.28464 5.5C5.28464 5.59816 5.24615 5.6924 5.17744 5.7625L0.939941 10"/>
+        </svg>
+      </button>
+
     </div>
-<!--    <button class="filters-button"> Filters </button>-->
+
+    <!--    <button class="filters-button"> Filters </button>-->
 
   </section>
 </template>
@@ -78,8 +91,6 @@ export default {
           text: 'Cabins'
         },
       ],
-      isSticky: false,
-      stickyPoint: 0,
       showLeft: false,
       showRight: false,
     }
@@ -109,7 +120,7 @@ export default {
     checkScroll() {
       const {scrollLeft, scrollWidth, clientWidth} = this.$refs.scrollContainer
       this.showLeft = scrollLeft > 0
-      this.showRight = scrollLeft < scrollWidth - clientWidth
+      this.showRight = scrollLeft < scrollWidth - clientWidth - 200
     },
     handleScroll() {
       this.isSticky = window.pageYOffset > this.stickyPoint

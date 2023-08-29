@@ -23,7 +23,7 @@ export default {
   components: {
     AppHeader,
     AppFooter,
-    UserMsg
+    UserMsg,
   }
 }
 </script>

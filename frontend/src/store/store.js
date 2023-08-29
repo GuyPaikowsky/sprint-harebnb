@@ -15,7 +15,6 @@ export const stayStore = createStore({
     selectedStay: stayService.getEmptyStay(),
     filter: {
       name: "",
-      inStock: "all",
       labels: [],
       // sortBy: "name"
     },

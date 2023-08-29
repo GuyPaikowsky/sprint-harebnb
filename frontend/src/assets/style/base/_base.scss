@@ -4,12 +4,24 @@
   box-sizing: border-box;
 }
 
+
 body {
-  height: 100%;
   margin: 0;
+  height: 100%;
+
   font-family: 'Circular', 'Roboto', sans-serif;
   font-weight: 400;
+
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  //scrollbar-width: none;
+  //-ms-overflow-style: none;
+  //
+  //&::-webkit-scrollbar {
+  //  display: none;
+
+  //}
 }
 
 h1,

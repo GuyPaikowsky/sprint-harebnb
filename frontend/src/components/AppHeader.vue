@@ -7,6 +7,7 @@
         <p class="title">Harebnb</p>
       </div>
     </div>
+    <DatePicker/>
     <div class="margin-divider"></div>
   </header>
   <StayLabels/>
@@ -16,11 +17,16 @@
 <script>
 import {mapGetters} from 'vuex'
 import {eventBusService, showErrorMsg, showSuccessMsg} from '@/services/event-bus.service'
-import StayFilter from "@/components/StayFilter.vue";
-import StayLabels from "@/components/StayLabels.vue";
+import StayFilter from '@/components/StayFilter.vue'
+import StayLabels from '@/components/StayLabels.vue'
+import DatePicker from '@/components/DatePicker.vue'
 
 export default {
-  components: {StayLabels, StayFilter},
+  components: {
+    StayLabels,
+    StayFilter,
+    DatePicker
+  },
   data() {
     return {
       userMessage: null,

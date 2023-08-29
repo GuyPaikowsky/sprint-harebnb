@@ -4,7 +4,6 @@
   background-color: $bg-clr-white;
   position: sticky;
   top: 55px;
-  z-index: 1;
 }
 
 .label-container-main {
@@ -13,15 +12,11 @@
   position: sticky;
   top: 55px;
   z-index: 1;
-  //isolation: isolate;
+  isolation: isolate;
   justify-content: space-between;
   align-items: center;
-  //width: 85%;
-  //padding: 0, $layout-margin;
+  width: 95%;
   background-color: $bg-clr-white;
-
-  //z-index: 99;
-
 
   .label-header {
     flex-grow: 1;
@@ -34,23 +29,45 @@
     overflow-x: auto;
     width: 100%;
 
-
     // TODO: find out if to place this in the main css.
     // Browser-specific scrollbar settings
     &::-webkit-scrollbar {
       display: none;
+
     }
+
     scrollbar-width: none;
     -ms-overflow-style: none;
 
     .label-container {
       display: flex;
-
       flex-direction: column;
       align-items: center;
       gap: 0.5em;
       cursor: pointer;
       width: 100%;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 40px;
+        background: linear-gradient(to left, rgba(255, 255, 255, 0), $bg-clr-white);
+        pointer-events: none;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 40px; // Adjust the width to control the fade-out area
+        background: linear-gradient(to right, rgba(255, 255, 255, 0), $bg-clr-white);
+        pointer-events: none; // Prevents the pseudo-element from blocking clicks
+      }
 
       .label-img {
         opacity: 0.5;
@@ -81,27 +98,34 @@
       }
     }
   }
+
   .scroll-button {
-    //align-items: center;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.30);
+    background-color: $bg-clr-white;
+    height: 26px;
     margin-top: 30px;
-    opacity: 0.5;
-    //flex-shrink: 0;
-    //z-index:  999;
+    flex-shrink: 0;
+    z-index: 999;
+    cursor: pointer;
 
     &:hover {
-      transition: opacity 150ms;
-      opacity: 1;
+      transition: 0.2s ease-in-out;
+      transform: scale(1.04);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
     }
 
     &.scroll-right {
-      //background-color: $bg-clr-white;
+      position: absolute;
+      right: 0;
     }
 
     &.scroll-left {
-
+      position: absolute;
+      left: 0;
     }
-
   }
+
   .filters-button {
     margin-top: 30px;
     display: flex;
@@ -109,5 +133,14 @@
     padding: 15px 1px;
     align-items: flex-start;
   }
+}
 
+.scroll-svg-element {
+  display: block;
+  fill: none;
+  height: 12px;
+  width: 12px;
+  stroke: currentcolor;
+  stroke-width: 2px;
+  overflow: visible;
 }
