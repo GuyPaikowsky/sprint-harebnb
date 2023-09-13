@@ -1,31 +1,30 @@
 <template>
   <section class="label-grid-container">
     <div class="label-container-main">
-
       <button @click="scrollLeft" v-if="showLeft" class="scroll-button scroll-left">
-        <svg class="scroll-svg-element" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" role="presentation" focusable="false" style="display: block; fill: none; height: 12px; width: 12px; stroke: currentcolor; stroke-width: 4; overflow: visible;">
-          <path d="M20 28 8.7 16.7a1 1 0 0 1 0-1.4L20 4"></path>
+        <svg class="scroll-svg-element" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" role="presentation" focusable="false">
+          <path fill="none" d="M20 28 8.7 16.7a1 1 0 0 1 0-1.4L20 4"/>
         </svg>
       </button>
 
       <div ref="scrollContainer" class="label-header">
-        <div class="label-container" v-for="(label, index) in labels" :key="index">
-          <img class="label-img" :src="label.img">
-          <span class="label-text"
-          >{{ label.text }}</span>
+        <div class="label-container"
+             v-for="(label, index) in labels"
+             :key="index">
+          <img
+              class="label-img"
+              :src="label.img">
+          <span class="label-text">{{ label.text }}</span>
         </div>
       </div>
-
-      <button @click="scrollRight" v-if="showRight" class="scroll-button scroll-right">
-        <svg class="scroll-svg-element" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 7 11">
-          <path d="M0.939941 1L5.17744 5.2375C5.24615 5.3076 5.28464 5.40184 5.28464 5.5C5.28464 5.59816 5.24615 5.6924 5.17744 5.7625L0.939941 10"/>
+      <button @click="scrollRight" v-if="showRight" class="scroll-button scroll-right ">
+        <svg class="scroll-svg-element" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" role="presentation" focusable="false">
+          <path fill="none" d="m12 4 11.3 11.3a1 1 0 0 1 0 1.4L12 28"/>
         </svg>
       </button>
-
     </div>
 
     <!--    <button class="filters-button"> Filters </button>-->
-
   </section>
 </template>
 <script>
@@ -95,19 +94,23 @@ export default {
       showRight: false,
     }
   },
+
   mounted() {
     this.stickyPoint = this.$el.offsetTop
     window.addEventListener('scroll', this.handleScroll)
     this.$refs.scrollContainer.addEventListener('scroll', this.checkScroll)
     this.checkScroll()
   },
+
   updated() {
     this.checkScroll()
   },
+
   beforeUnmount() {
     window.removeEventListener('scroll', this.handleScroll)
     this.$refs.scrollContainer.removeEventListener('scroll', this.checkScroll)
   },
+
   methods: {
     scrollLeft() {
       this.$refs.scrollContainer.scrollBy({top: 0, left: -300, behavior: 'smooth'})
@@ -118,7 +121,7 @@ export default {
       this.checkScroll()
     },
     checkScroll() {
-      const {scrollLeft, scrollWidth, clientWidth} = this.$refs.scrollContainer
+      const { scrollLeft, scrollWidth, clientWidth } = this.$refs.scrollContainer
       this.showLeft = scrollLeft > 0
       this.showRight = scrollLeft < scrollWidth - clientWidth - 200
     },

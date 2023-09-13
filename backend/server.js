@@ -1,16 +1,16 @@
 import express from 'express'
 import cookieParser from 'cookie-parser'
 import cors from 'cors'
-import path from "path"
+import path from 'path'
 
-import {logger} from './services/logger.service.js'
+import { logger } from './services/logger.service.js'
 
 logger.info('server.js loaded...')
 
 const app = express()
 
-import {fileURLToPath} from 'url'
-import {dirname} from 'path'
+import { fileURLToPath } from 'url'
+import { dirname } from 'path'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -33,9 +33,9 @@ if (process.env.NODE_ENV === 'production') {
   app.use(cors(corsOptions))
 }
 
-import {authRoutes} from './api/auth/auth.routes.js'
-import {userRoutes} from './api/user/user.routes.js'
-import {stayRoutes} from './api/stay/stay.routes.js'
+import { authRoutes } from './api/auth/auth.routes.js'
+import { userRoutes } from './api/user/user.routes.js'
+import { stayRoutes } from './api/stay/stay.routes.js'
 
 app.use('/api/auth', authRoutes)
 app.use('/api/user', userRoutes)

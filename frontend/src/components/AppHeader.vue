@@ -5,23 +5,26 @@
       <div class="harebnb-logo">
         <img src="../assets/img/harebnb.svg" alt="Harebnb">
         <p class="title">Harebnb</p>
+<!--            <stay-filter @filter="setFilter"/>-->
+
       </div>
     </div>
-    <DatePicker/>
     <div class="margin-divider"></div>
   </header>
+
   <StayLabels/>
 
 </template>
 
 <script>
-import {mapGetters} from 'vuex'
-import {eventBusService, showErrorMsg, showSuccessMsg} from '@/services/event-bus.service'
+import { mapGetters} from 'vuex'
+import { eventBusService, showErrorMsg, showSuccessMsg} from '@/services/event-bus.service'
 import StayFilter from '@/components/StayFilter.vue'
 import StayLabels from '@/components/StayLabels.vue'
 import DatePicker from '@/components/DatePicker.vue'
 
 export default {
+  name: 'AppHeader',
   components: {
     StayLabels,
     StayFilter,

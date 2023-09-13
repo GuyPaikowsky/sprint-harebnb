@@ -1,12 +1,13 @@
-import {createStore} from 'vuex'
-import {stayService} from '@/services/stay.service.js'
-import {userStore} from '@/store/user.store.js'
-import {showErrorMsg, showSuccessMsg} from '@/services/event-bus.service'
+import { createStore } from 'vuex'
+import { stayService } from '@/services/stay.service.js'
+import { userStore } from '@/store/user.store.js'
+import { showErrorMsg, showSuccessMsg } from '@/services/event-bus.service'
+
 
 export const stayStore = createStore({
   strict: process.env.NODE_ENV !== 'production',
   modules: {
-    userStore
+    userStore,
   },
   state: {
     stays: [],
@@ -14,7 +15,7 @@ export const stayStore = createStore({
     limit: 30,
     selectedStay: stayService.getEmptyStay(),
     filter: {
-      name: "",
+      name: '',
       labels: [],
       // sortBy: "name"
     },
@@ -53,7 +54,7 @@ export const stayStore = createStore({
     }
   },
   actions: {
-    async loadStays({commit, state}) {
+    async loadStays({ commit, state }) {
       try {
         const stays = await stayService.query(state.filter, state.page, state.limit)
         commit('setStays', stays)
@@ -63,21 +64,20 @@ export const stayStore = createStore({
         showErrorMsg('Failed to load stays!')
       }
     },
-    setFilter({commit}, filter) {
+    setFilter({ commit }, filter) {
       return Promise.resolve(commit('setFilter', filter))
     },
-    async loadStay({commit}, stayId) {
+    async loadStay({ commit }, stayId) {
       try {
         const stay = await stayService.getById(stayId)
         commit('setSelectedStay', stay)
         showSuccessMsg('Loaded stay successfully!')
       } catch (err) {
         console.error(err)
-
         showErrorMsg('Failed to load stay!')
       }
     },
-    async saveStay({commit}, stay) {
+    async saveStay({ commit }, stay) {
       try {
         const savedStay = await stayService.save(stay)
         if (stay._id) {
@@ -91,7 +91,7 @@ export const stayStore = createStore({
         showErrorMsg('Failed to save stay!')
       }
     },
-    async deleteStay({commit}, stayId) {
+    async deleteStay({ commit }, stayId) {
       try {
         await stayService.remove(stayId)
         commit('removeStay', stayId)
@@ -101,12 +101,12 @@ export const stayStore = createStore({
         showErrorMsg('Failed to delete stay!')
       }
     },
-    clearSelectedStay({commit}) {
+    clearSelectedStay({ commit }) {
       commit('clearSelectedStay')
     },
     async getLabels({ commit }) {
       try {
-        const labels = await stayService.getLabels();
+        const labels = await stayService.getLabels()
         console.log(labels)
         commit('setLabels', labels)
       } catch (err) {

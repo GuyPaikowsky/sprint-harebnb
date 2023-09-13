@@ -1,0 +1,100 @@
+.carousel-image {
+  height: auto;
+  object-fit: cover;
+  border-radius: 3%;
+  aspect-ratio: 1 / 1;
+}
+
+// SwiperJS controls
+// .stay-item class is used to control hover effects, with liberal use of !important to override SwiperJS.
+.stay-preview {
+
+  // Initial styles
+  .swiper-button-next,
+  .swiper-button-prev,
+  .swiper-button-disabled {
+    opacity: 0 !important;
+    transition:
+            opacity 0.25s cubic-bezier(0.2, 0, 0, 1) !important;
+  }
+
+  // Hover effects for entire stay-preview class
+  &:hover {
+    .swiper-button-next, .swiper-button-prev {
+      opacity: 0.8 !important;
+      transition: opacity 0.25s cubic-bezier(0.2, 0, 0, 1) !important;
+
+      // Hover effects for each button separately
+      &:hover {
+        opacity: 1 !important;
+        transform: scale(1.04);
+        transition:
+                transform 0.25s cubic-bezier(0.2, 0, 0, 1),
+                opacity 0.25s cubic-bezier(0.2, 0, 0, 1) !important;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+      }
+    }
+
+    // Immediately stop rendering once button is disabled
+    .swiper-button-disabled {
+      display: none;
+      pointer-events: none !important;
+    }
+  }
+}
+
+// Styles for swiper buttons
+.swiper-button-next,
+.swiper-button-prev {
+  width: 28px !important;
+  height: 28px !important;
+  margin-top: 0 !important;
+  border: 0.5px solid rgba(0, 0, 0, 0.30);
+  border-radius: 50%;
+  background-color: white;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 50%;
+
+  // Remove default SVGs from swiper buttons
+  &::after {
+    content: '';
+    display: none;
+  }
+}
+
+// Airbnb SVGs for swiper buttons
+.swiper-button-next {
+  background-image: url('data:image/svg+xml, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" role="presentation" focusable="false" style="display: block; fill: none; height: 12px; width: 12px; stroke: currentcolor; stroke-width: 4; overflow: visible;"><path fill="none" d="m12 4 11.3 11.3a1 1 0 0 1 0 1.4L12 28"></path></svg>') !important;
+}
+
+.swiper-button-prev {
+  background-image: url('data:image/svg+xml, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M20 28 8.7 16.7a1 1 0 0 1 0-1.4L20 4" fill="none" stroke="currentColor" stroke-width="4"/></svg>');
+}
+
+// Styles for swiper pagination bullets
+.swiper-pagination-bullet {
+  background-color: $text-clr2 !important;
+  opacity: 0.85 !important;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: $bg-clr-white !important;
+}
+
+// Descriptive text
+.stay-preview {
+  h1 {
+    font-size: 1em;
+    font-weight: 600;
+  }
+
+  h2 {
+
+  }
+
+  h3 {
+
+  }
+
+}

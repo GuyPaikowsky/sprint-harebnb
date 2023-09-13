@@ -1,4 +1,4 @@
-import {userService} from '@/services/user.service.js'
+import { userService } from '@/services/user.service.js'
 
 export const userStore = {
   state: {
@@ -10,27 +10,27 @@ export const userStore = {
     },
   },
   actions: {
-    async login({commit}, userCred) {
+    async login({ commit }, userCred) {
       try {
         const user = await userService.login(userCred)
-        commit("setUser", user)
+        commit('setUser', user)
       } catch (err) {
-        console.error("Failed to login:", err)
+        console.error('Failed to login:', err)
         throw err
       }
     },
-    async signup({commit}, userCred) {
+    async signup({ commit }, userCred) {
       try {
         const user = await userService.signup(userCred)
-        commit("setUser", user)
+        commit('setUser', user)
       } catch (err) {
-        console.error("Failed to signup:", err);
+        console.error('Failed to signup:', err)
         throw err
       }
     },
-    logout({commit}) {
+    logout({ commit }) {
       userService.logout()
-      commit("setUser", null)
+        .then(commit('setUser', null))
     },
   },
   getters: {

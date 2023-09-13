@@ -7,7 +7,7 @@
 
 <script>
 import StayList from '@/components/StayList.vue'
-import StayFilter from "@/components/StayFilter.vue"
+import StayFilter from '@/components/StayFilter.vue'
 
 export default {
   name: 'StayIndex',
@@ -23,7 +23,7 @@ export default {
   methods: {
     setFilter(filter) {
       this.$store.dispatch('setFilter', filter)
-          .then(() => this.$store.dispatch('loadStays'))
+        .then(() => this.$store.dispatch('loadStays'))
     }
   },
   watch: {

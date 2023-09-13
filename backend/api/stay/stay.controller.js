@@ -1,9 +1,9 @@
-import {logger} from '../../services/logger.service.js'
-import {stayService} from './stay.service.js'
+import { logger } from '../../services/logger.service.js'
+import { stayService } from './stay.service.js'
 
 export async function getStayById(req, res) {
   try {
-    const {id} = req.params
+    const { id } = req.params
     const stay = await stayService.getById(id)
     res.send(stay)
   } catch (err) {
@@ -13,10 +13,9 @@ export async function getStayById(req, res) {
 }
 
 export async function getStays(req, res) {
-  console.log('Query parameters:', req.query); // Log the query parameters
-
-  const page = +req.query.page || 1;
-  const limit = +req.query.limit || 20;
+  console.log('Query parameters:', req.query)
+  const page = +req.query.page || 1
+  const limit = +req.query.limit || 20
 
   const getLabelsOnly = req.query.getLabelsOnly === 'true'
   try {
@@ -61,7 +60,7 @@ export async function updateStay(req, res) {
 
 export async function removeStay(req, res) {
   try {
-    const {id} = req.params
+    const { id } = req.params
     await stayService.remove(id)
     logger.info(`Stay ${id} removed`)
   } catch (err) {

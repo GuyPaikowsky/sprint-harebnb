@@ -8,11 +8,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@egjs/vue3-flicking": "^4.11.0",
     "@fawmi/vue-google-maps": "^0.9.79",
+    "@googlemaps/js-api-loader": "^1.16.2",
+    "@vuepic/vue-datepicker": "^6.0.2",
     "axios": "^1.4.0",
     "chart.js": "^4.3.0",
     "element-plus": "^2.3.8",
     "equal": "^0.1.1",
+    "swiper": "^10.2.0",
     "vue": "^3.3.4",
     "vue-chartjs": "^5.2.0",
     "vue-router": "^4.2.2",
@@ -20,6 +24,8 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.2.3",
+    "eslint": "^8.48.0",
+    "eslint-plugin-vue": "^9.17.0",
     "sass": "^1.64.2",
     "vite": "^4.3.9"
   }

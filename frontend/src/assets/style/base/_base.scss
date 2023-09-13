@@ -11,6 +11,7 @@ body {
 
   font-family: 'Circular', 'Roboto', sans-serif;
   font-weight: 400;
+  //font-size: 14px;
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -40,6 +41,17 @@ a {
   color: unset;
 }
 
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    margin: 0;
+    padding: 0;
+  }
+}
+
 /* Dont stretch my Media */
 
 img,
@@ -59,3 +71,4 @@ object {
   text-decoration: overline;
   color: green
 }
+
